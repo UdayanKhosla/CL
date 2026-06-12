@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CommerceLab Economics: interactive, CBSE-aligned tools for Class XI and XII students."
+    />
+    <title>Market Equilibrium Lab | CommerceLab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand site-logo" href="index.html" aria-label="CommerceLab dashboard" draggable="false"><span class="site-logo-art" aria-hidden="true"></span></a>
+
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a class="active" href="index.html">Dashboard</a>
+        <a href="sources.html">Sources</a>
+        <a href="about.html">About</a>
+      </nav>
+      <a class="header-action" href="index.html#tools">All tools</a>
+    </header>
+
+    <main id="top">
+      <section class="intro tool-intro">
+        <div>
+          <h1>Market Equilibrium Lab</h1>
+          <p class="intro-copy">Move a curve and read the new equilibrium.</p>
+        </div>
+
+        <div class="alignment-note">
+          <span class="status-dot" aria-hidden="true"></span>
+          <div>
+            <strong>CBSE 2026–27 aligned</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="simulator" id="simulator" aria-labelledby="simulator-title">
+        <div class="simulator-heading">
+          <div>
+            <p class="section-label">Class XI · Introductory Microeconomics</p>
+            <h2 id="simulator-title">Market Equilibrium Lab</h2>
+          </div>
+          <button class="reset-button" id="resetButton" type="button">
+            Reset graph
+          </button>
+        </div>
+
+        <div class="workspace">
+          <aside class="controls" aria-label="Graph controls">
+            <div class="control-group">
+              <label for="eventSelect">What changes?</label>
+              <select id="eventSelect">
+                <option value="income">Income rises (normal good)</option>
+                <option value="substitute">
+                  Price of a substitute rises
+                </option>
+                <option value="complement">
+                  Price of a complement falls
+                </option>
+                <option value="technology">Production technology improves</option>
+                <option value="input-cost">Input costs rise</option>
+                <option value="tax">A per-unit tax is imposed</option>
+                <option value="subsidy">A per-unit subsidy is given</option>
+              </select>
+            </div>
+
+            <div class="direct-control">
+              <span class="drag-symbol" aria-hidden="true">↔</span>
+              <div>
+                <strong id="dragInstruction">Drag D₂ on the graph</strong>
+                <span id="dragAmount">Moderate shift</span>
+              </div>
+            </div>
+
+            <div class="assumption">
+              <span aria-hidden="true">i</span>
+              <p id="assumptionText">
+                Assumption: the good is normal and supply remains unchanged.
+              </p>
+            </div>
+          </aside>
+
+          <div class="graph-panel">
+            <div class="graph-toolbar">
+              <div class="legend" aria-label="Graph legend">
+                <span><i class="line original-demand"></i>D₁ Demand</span>
+                <span id="shiftedLegend"
+                  ><i class="line shifted-curve"></i>D₂ New demand</span
+                >
+                <span><i class="line supply-line"></i>S₁ Supply</span>
+              </div>
+              <span class="live-label" aria-live="polite" id="liveLabel">
+                Demand shifts right
+              </span>
+            </div>
+
+            <div class="graph-wrap">
+              <svg
+                id="equilibriumGraph"
+                viewBox="0 0 720 480"
+                role="img"
+                aria-labelledby="graphTitle graphDescription"
+              >
+                <title id="graphTitle">
+                  Interactive demand and supply graph
+                </title>
+                <desc id="graphDescription">
+                  Demand shifts right when income rises for a normal good,
+                  increasing equilibrium price and quantity.
+                </desc>
+
+                <defs>
+                  <clipPath id="plotClip">
+                    <rect x="72" y="30" width="590" height="390"></rect>
+                  </clipPath>
+                  <filter id="pointShadow" x="-100%" y="-100%" width="300%" height="300%">
+                    <feDropShadow
+                      dx="0"
+                      dy="2"
+                      stdDeviation="2"
+                      flood-opacity=".18"
+                    />
+                  </filter>
+                </defs>
+
+                <g class="grid" aria-hidden="true"></g>
+                <g class="axes" aria-hidden="true">
+                  <line x1="72" y1="420" x2="670" y2="420"></line>
+                  <line x1="72" y1="420" x2="72" y2="22"></line>
+                  <path d="M670 420l-10-5v10z"></path>
+                  <path d="M72 22l-5 10h10z"></path>
+                  <text x="655" y="454">Quantity</text>
+                  <text class="price-label" x="25" y="42">Price</text>
+                  <text x="55" y="442">0</text>
+                </g>
+
+                <g clip-path="url(#plotClip)">
+                  <path id="originalDemandPath" class="curve demand-original"></path>
+                  <path id="originalSupplyPath" class="curve supply-original"></path>
+                  <path
+                    id="shiftedCurveHit"
+                    class="curve-hit"
+                    role="slider"
+                    tabindex="0"
+                    aria-label="Shift the new demand curve"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="58"
+                  ></path>
+                  <path id="shiftedCurvePath" class="curve curve-shifted"></path>
+                </g>
+
+                <g id="oldGuides" class="guides old-guides"></g>
+                <g id="newGuides" class="guides new-guides"></g>
+
+                <g id="curveLabels" class="curve-labels" aria-hidden="true"></g>
+                <g id="oldPoint" class="equilibrium-point old-point"></g>
+                <g id="newPoint" class="equilibrium-point new-point"></g>
+              </svg>
+            </div>
+          </div>
+
+          <aside class="explanation" aria-live="polite">
+            <div class="result-heading">
+              <p class="section-label">What happens?</p>
+              <span id="curveBadge">Demand change</span>
+            </div>
+
+            <div class="outcome-list">
+              <div>
+                <span class="outcome-icon" aria-hidden="true">→</span>
+                <p>
+                  <small>Curve</small>
+                  <strong id="curveOutcome">Demand shifts right</strong>
+                </p>
+              </div>
+              <div>
+                <span class="outcome-icon" id="priceIcon" aria-hidden="true"
+                  >↑</span
+                >
+                <p>
+                  <small>Equilibrium price</small>
+                  <strong id="priceOutcome">Rises</strong>
+                </p>
+              </div>
+              <div>
+                <span class="outcome-icon" id="quantityIcon" aria-hidden="true"
+                  >↑</span
+                >
+                <p>
+                  <small>Equilibrium quantity</small>
+                  <strong id="quantityOutcome">Rises</strong>
+                </p>
+              </div>
+            </div>
+
+            <div class="values">
+              <div>
+                <span>Original equilibrium</span>
+                <strong id="oldValues">P 5 · Q 5</strong>
+              </div>
+              <div>
+                <span>New equilibrium</span>
+                <strong id="newValues">P 6 · Q 6</strong>
+              </div>
+            </div>
+
+            <div class="board-answer">
+              <div class="answer-title">
+                <h3>Explanation</h3>
+                <button id="copyAnswerButton" type="button">Copy</button>
+              </div>
+              <p id="boardAnswer">
+                An increase in consumer income raises demand for a normal good.
+                Therefore, the demand curve shifts right from D₁ to D₂. At the
+                new intersection with supply, both equilibrium price and
+                equilibrium quantity increase.
+              </p>
+              <p class="answer-tip" id="answerTip">
+                In an exam, name the cause, state the curve shift, and conclude
+                with both equilibrium effects.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <a class="brand footer-brand site-logo" href="index.html" aria-label="CommerceLab dashboard" draggable="false"><span class="site-logo-art" aria-hidden="true"></span></a>
+      <p>Interactive Commerce tools for CBSE Class XI–XII.</p>
+      <a href="sources.html">View sources</a>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      Answer copied
+    </div>
+
+    <script src="app.js"></script>
+      <script src="nav.js"></script>
+  </body>
+</html>

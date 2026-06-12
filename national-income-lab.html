@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CBSE Class XII National Income calculator for income, expenditure and value added method numericals."
+    />
+    <title>National Income Calculator | CommerceLab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand site-logo" href="index.html" aria-label="CommerceLab dashboard" draggable="false"><span class="site-logo-art" aria-hidden="true"></span></a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a class="active" href="index.html">Dashboard</a>
+        <a href="sources.html">Sources</a>
+        <a href="about.html">About</a>
+      </nav>
+      <a class="header-action" href="index.html#tools">All tools</a>
+    </header>
+
+    <main class="ni-page page-shell">
+      <section class="ni-heading">
+        <div>
+          <h1>National Income Calculator</h1>
+          <p>Calculate National Income by method.</p>
+        </div>
+        <span>Class XII · Macroeconomics</span>
+      </section>
+
+      <section class="ni-tool">
+        <div class="ni-mode-tabs" role="tablist" aria-label="Calculation mode">
+          <button class="active" type="button" data-ni-mode="income" role="tab" aria-selected="true">Income method</button>
+          <button type="button" data-ni-mode="expenditure" role="tab" aria-selected="false">Expenditure method</button>
+          <button type="button" data-ni-mode="valueAdded" role="tab" aria-selected="false">Value added method</button>
+        </div>
+
+        <div class="ni-workspace">
+          <section class="ni-input-panel">
+            <div class="ni-form" data-ni-panel="income">
+              <label class="ni-field wide"><span>Compensation of employees</span><input id="compensation" inputmode="decimal" value="1250" /></label>
+              <label class="ni-field wide"><span>Operating surplus</span><input id="operatingSurplus" inputmode="decimal" value="620" /></label>
+              <label class="ni-field wide"><span>Mixed income of self-employed</span><input id="mixedIncome" inputmode="decimal" value="270" /></label>
+              <label class="ni-field wide"><span>NFIA</span><input id="incomeNfia" inputmode="decimal" value="40" /></label>
+            </div>
+
+            <div class="ni-form sector-form" data-ni-panel="valueAdded" hidden>
+              <div class="ni-sector-head"><span>Sector</span><span>Value of output</span><span>Intermediate consumption</span></div>
+              <label><strong>Primary</strong><input id="primaryOutput" aria-label="Primary sector value of output" inputmode="decimal" value="900" /><input id="primaryIC" aria-label="Primary sector intermediate consumption" inputmode="decimal" value="300" /></label>
+              <label><strong>Secondary</strong><input id="secondaryOutput" aria-label="Secondary sector value of output" inputmode="decimal" value="1500" /><input id="secondaryIC" aria-label="Secondary sector intermediate consumption" inputmode="decimal" value="700" /></label>
+              <label><strong>Tertiary</strong><input id="tertiaryOutput" aria-label="Tertiary sector value of output" inputmode="decimal" value="1300" /><input id="tertiaryIC" aria-label="Tertiary sector intermediate consumption" inputmode="decimal" value="400" /></label>
+              <div class="ni-adjustments">
+                <label class="ni-field"><span>Depreciation</span><input id="vaDepreciation" inputmode="decimal" value="120" /></label>
+                <label class="ni-field"><span>NFIA</span><input id="vaNfia" inputmode="decimal" value="40" /></label>
+                <label class="ni-field"><span>Net indirect taxes</span><input id="vaNit" inputmode="decimal" value="180" /></label>
+              </div>
+            </div>
+
+            <div class="ni-form" data-ni-panel="expenditure" hidden>
+              <label class="ni-field"><span>Private consumption (C)</span><input id="consumption" inputmode="decimal" value="1600" /></label>
+              <label class="ni-field"><span>Gross investment (I)</span><input id="investment" inputmode="decimal" value="520" /></label>
+              <label class="ni-field"><span>Government expenditure (G)</span><input id="government" inputmode="decimal" value="460" /></label>
+              <label class="ni-field"><span>Exports (X)</span><input id="exports" inputmode="decimal" value="300" /></label>
+              <label class="ni-field"><span>Imports (M)</span><input id="imports" inputmode="decimal" value="180" /></label>
+              <label class="ni-field"><span>Depreciation</span><input id="expDepreciation" inputmode="decimal" value="120" /></label>
+              <label class="ni-field"><span>NFIA</span><input id="expNfia" inputmode="decimal" value="40" /></label>
+              <label class="ni-field"><span>Net indirect taxes</span><input id="expNit" inputmode="decimal" value="180" /></label>
+            </div>
+
+            <div class="ni-actions">
+              <button class="primary-button" id="niCalculate" type="button">Calculate</button>
+              <button id="niReset" type="button">Reset figures</button>
+            </div>
+          </section>
+
+          <section class="ni-result-panel" aria-live="polite">
+            <div class="ni-result-top">
+              <span id="niResultTitle">National Income</span>
+              <strong id="niResultValue">₹2,140 crore</strong>
+            </div>
+            <div class="ni-route" id="niRoute"></div>
+            <div class="ni-formula"><span>Formula</span><strong id="niFormula"></strong></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="ni-practice">
+        <header><div><strong>Quick challenge</strong><span id="niPracticeNumber">1/5</span></div><button id="niPracticeNext" type="button" hidden>Next →</button></header>
+        <p id="niPracticePrompt"></p>
+        <div class="ni-practice-answer">
+          <input id="niPracticeAnswer" aria-label="Quick challenge answer" inputmode="decimal" placeholder="Your answer" />
+          <button id="niPracticeCheck" type="button">Check</button>
+        </div>
+        <p class="ni-practice-feedback" id="niPracticeFeedback" role="status" hidden></p>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand footer-brand site-logo" href="index.html" aria-label="CommerceLab dashboard" draggable="false"><span class="site-logo-art" aria-hidden="true"></span></a>
+      <p>CBSE Class XI–XII Commerce tools.</p>
+      <a href="sources.html">Sources</a>
+    </footer>
+
+    <script src="national-income-engine.js"></script>
+    <script src="national-income-lab.js"></script>
+      <script src="nav.js"></script>
+  </body>
+</html>

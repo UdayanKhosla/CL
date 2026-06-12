@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Practice classifying 50 CBSE Class XII cash flow items into operating, investing and financing activities."
+    />
+    <title>Cash Flow Classification | CommerceLab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand site-logo" href="index.html" aria-label="CommerceLab dashboard" draggable="false"><span class="site-logo-art" aria-hidden="true"></span></a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a class="active" href="index.html">Dashboard</a>
+        <a href="sources.html">Sources</a>
+        <a href="about.html">About</a>
+      </nav>
+      <a class="header-action" href="index.html#tools">All tools</a>
+    </header>
+
+    <main class="cashflow-page page-shell">
+      <section class="cashflow-intro">
+        <div>
+          <p class="section-label">Accountancy · Class XII</p>
+          <h1>Cash Flow<br />Classification</h1>
+          <p class="intro-copy">
+            Classify 50 cash movements.
+          </p>
+        </div>
+        <aside class="cashflow-intro-note">
+          <strong>Operating · Investing · Financing</strong>
+          <small>Equal category mastery</small>
+        </aside>
+      </section>
+
+      <section class="cashflow-game" id="cashFlowGame" aria-labelledby="cashFlowPrompt">
+        <header class="cashflow-game-header">
+          <div class="cashflow-progress-track" aria-label="Sprint progress">
+            <span id="cashFlowProgress"></span>
+          </div>
+          <div class="cashflow-status">
+            <span id="cashFlowMode">50-card sprint</span>
+            <span>Card <strong id="cashFlowQuestionNumber">1</strong>/<strong id="cashFlowQuestionTotal">50</strong></span>
+            <span>Correct <strong id="cashFlowScore">0</strong></span>
+            <span>Streak <strong id="cashFlowStreak">0</strong></span>
+          </div>
+        </header>
+
+        <div class="cashflow-layout">
+          <aside class="cashflow-sidebar">
+            <div>
+              <p class="section-label">Live mastery</p>
+              <h2>Your cash map</h2>
+            </div>
+            <div class="mastery-list">
+              <article>
+                <div><strong>Operating</strong><span id="operatingMasteryValue">—</span></div>
+                <div class="mastery-track"><i id="operatingMastery"></i></div>
+                <small>Day-to-day revenue activity</small>
+              </article>
+              <article>
+                <div><strong>Investing</strong><span id="investingMasteryValue">—</span></div>
+                <div class="mastery-track investing"><i id="investingMastery"></i></div>
+                <small>Long-term assets and investments</small>
+              </article>
+              <article>
+                <div><strong>Financing</strong><span id="financingMasteryValue">—</span></div>
+                <div class="mastery-track financing"><i id="financingMastery"></i></div>
+                <small>Capital and borrowings</small>
+              </article>
+            </div>
+            <div class="cashflow-assumption">
+              <strong>Default assumption</strong>
+              <p>
+                The business is a non-financial company unless the card says
+                otherwise.
+              </p>
+            </div>
+            <div class="cashflow-shortcuts">
+              <span><kbd>O</kbd> Operating</span>
+              <span><kbd>I</kbd> Investing</span>
+              <span><kbd>F</kbd> Financing</span>
+            </div>
+          </aside>
+
+          <div class="cashflow-arena">
+            <div id="cashFlowQuestionView">
+              <div class="cashflow-question-card">
+                <div class="cashflow-card-meta">
+                  <div>
+                    <span id="cashFlowDifficulty">Core</span>
+                    <span class="cash-direction inflow" id="cashFlowDirection">Cash inflow</span>
+                  </div>
+                </div>
+                <span class="cashflow-amount" id="cashFlowAmount">₹18,40,000</span>
+                <h2 id="cashFlowPrompt">
+                  Cash received from customers for goods sold during the year.
+                </h2>
+              </div>
+
+              <div class="cashflow-choices" aria-label="Choose a cash flow activity">
+                <button type="button" data-activity-choice="operating">
+                  <span class="choice-letter">O</span>
+                  <span><strong>Operating</strong><small>Principal business activity</small></span>
+                  <i>1</i>
+                </button>
+                <button type="button" data-activity-choice="investing">
+                  <span class="choice-letter">I</span>
+                  <span><strong>Investing</strong><small>Long-term assets and investments</small></span>
+                  <i>2</i>
+                </button>
+                <button type="button" data-activity-choice="financing">
+                  <span class="choice-letter">F</span>
+                  <span><strong>Financing</strong><small>Capital and borrowings</small></span>
+                  <i>3</i>
+                </button>
+              </div>
+
+              <div class="cashflow-feedback" id="cashFlowFeedback" role="status" aria-live="polite" hidden>
+                <span id="cashFlowFeedbackResult">Correct classification</span>
+                <h3 id="cashFlowFeedbackTitle">Operating is right.</h3>
+                <p id="cashFlowFeedbackText"></p>
+                <button id="cashFlowNext" type="button">
+                  Next card <span>→</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="cashflow-completion" id="cashFlowCompletion" hidden>
+              <p class="section-label">Sprint complete</p>
+              <h2>You mapped the movement of cash.</h2>
+              <div class="cashflow-result-grid">
+                <article><span>Correct</span><strong id="cashFlowFinalCorrect">0/50</strong></article>
+                <article><span>Equal-weight mastery</span><strong id="cashFlowFinalMastery">0%</strong></article>
+                <article><span>Best streak</span><strong id="cashFlowFinalStreak">0</strong></article>
+              </div>
+              <p id="cashFlowCompletionMessage"></p>
+              <div class="final-mastery">
+                <article id="finalOperating">
+                  <div><span>Operating</span><strong>0%</strong></div>
+                  <div><span></span></div><small>0 of 0 correct</small>
+                </article>
+                <article id="finalInvesting">
+                  <div><span>Investing</span><strong>0%</strong></div>
+                  <div><span></span></div><small>0 of 0 correct</small>
+                </article>
+                <article id="finalFinancing">
+                  <div><span>Financing</span><strong>0%</strong></div>
+                  <div><span></span></div><small>0 of 0 correct</small>
+                </article>
+              </div>
+              <div class="cashflow-completion-actions">
+                <button class="primary-button" id="cashFlowReview" type="button">Review mistakes</button>
+                <button class="landing-secondary" id="cashFlowRestart" type="button">Start a fresh sprint</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cashflow-celebration" id="cashFlowCelebration" aria-hidden="true"></div>
+      </section>
+
+      <section class="cashflow-source-note">
+        <div>
+          <strong>Syllabus basis</strong>
+          <p>CBSE Class XII · AS 3 (Revised)</p>
+        </div>
+        <a href="sources.html">View academic sources <span>→</span></a>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand footer-brand site-logo" href="index.html" aria-label="CommerceLab dashboard" draggable="false"><span class="site-logo-art" aria-hidden="true"></span></a>
+      <p>Interactive Commerce tools for CBSE Class XI–XII.</p>
+      <a href="sources.html">View sources</a>
+    </footer>
+
+    <script src="cash-flow-engine.js"></script>
+    <script src="cash-flow-classifier.js"></script>
+      <script src="nav.js"></script>
+  </body>
+</html>

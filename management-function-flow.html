@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Interactive NCERT-aligned Management Function Flow for CBSE Class XII Business Studies."
+    />
+    <title>Management Function Flow | CommerceLab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand site-logo" href="index.html" aria-label="CommerceLab dashboard" draggable="false"><span class="site-logo-art" aria-hidden="true"></span></a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a class="active" href="index.html">Dashboard</a>
+        <a href="sources.html">Sources</a>
+        <a href="about.html">About</a>
+      </nav>
+      <a class="header-action" href="index.html#tools">All tools</a>
+    </header>
+
+    <main class="management-page page-shell">
+      <section class="management-heading">
+        <div>
+          <h1>Management Function Flow</h1>
+          <p>Follow management from plans to corrective action.</p>
+        </div>
+        <span>Class XII · Business Studies</span>
+      </section>
+
+      <section class="management-tool">
+        <div class="management-flow-wrap">
+          <p>Select a function</p>
+          <div class="management-flow" id="managementFlow" data-active-index="0" role="tablist" aria-label="Functions of management">
+            <button class="active" type="button" data-management-function="planning" role="tab" aria-selected="true">
+              <small>01</small><strong>Planning</strong>
+            </button>
+            <i aria-hidden="true">→</i>
+            <button type="button" data-management-function="organizing" role="tab" aria-selected="false" tabindex="-1">
+              <small>02</small><strong>Organizing</strong>
+            </button>
+            <i aria-hidden="true">→</i>
+            <button type="button" data-management-function="staffing" role="tab" aria-selected="false" tabindex="-1">
+              <small>03</small><strong>Staffing</strong>
+            </button>
+            <i aria-hidden="true">→</i>
+            <button type="button" data-management-function="directing" role="tab" aria-selected="false" tabindex="-1">
+              <small>04</small><strong>Directing</strong>
+            </button>
+            <i aria-hidden="true">→</i>
+            <button type="button" data-management-function="controlling" role="tab" aria-selected="false" tabindex="-1">
+              <small>05</small><strong>Controlling</strong>
+            </button>
+          </div>
+        </div>
+
+        <div class="management-detail">
+          <section class="management-meaning">
+            <span id="managementNumber">01</span>
+            <h2 id="managementName">Planning</h2>
+            <small>Meaning</small>
+            <p id="managementMeaning"></p>
+            <a id="managementChapter" href="https://ncert.nic.in/textbook/pdf/lebs104.pdf" target="_blank" rel="noreferrer">NCERT Chapter 4</a>
+          </section>
+
+          <div class="management-knowledge-grid">
+            <section>
+              <h3>Features</h3>
+              <ul id="managementFeatures"></ul>
+            </section>
+            <section>
+              <h3>Importance</h3>
+              <ul id="managementImportance"></ul>
+            </section>
+            <section>
+              <h3 id="managementProcessTitle">Planning process</h3>
+              <ol id="managementProcess"></ol>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="management-check">
+        <header>
+          <div><strong>Function check</strong><span id="managementCheckNumber">1/8</span></div>
+          <button id="managementNext" type="button" hidden>Next →</button>
+        </header>
+        <p id="managementCheckPrompt"></p>
+        <div class="management-check-choices" aria-label="Choose a management function">
+          <button type="button" data-management-choice="planning">Planning</button>
+          <button type="button" data-management-choice="organizing">Organizing</button>
+          <button type="button" data-management-choice="staffing">Staffing</button>
+          <button type="button" data-management-choice="directing">Directing</button>
+          <button type="button" data-management-choice="controlling">Controlling</button>
+        </div>
+        <button class="management-check-button" id="managementCheck" type="button" disabled>Check</button>
+        <p class="management-feedback" id="managementFeedback" role="status" hidden></p>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand footer-brand site-logo" href="index.html" aria-label="CommerceLab dashboard" draggable="false"><span class="site-logo-art" aria-hidden="true"></span></a>
+      <p>NCERT-aligned Business Studies practice.</p>
+      <a href="sources.html">View sources</a>
+    </footer>
+
+    <script src="management-function-engine.js"></script>
+    <script src="management-function-flow.js"></script>
+      <script src="nav.js"></script>
+  </body>
+</html>
