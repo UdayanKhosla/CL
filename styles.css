@@ -1002,3 +1002,71 @@ select:focus {
   border: 1px solid var(--line);
   border-radius: 18px;
   background: var(--white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.commerce-dashboard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding-top: 0;
+}
+
+.dashboard-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  padding: 24px 0 28px;
+}
+
+.dashboard-intro > div {
+  display: grid;
+  grid-template-columns: 380px minmax(360px, 650px);
+  gap: clamp(34px, 5vw, 76px);
+  align-items: center;
+  flex: 1;
+}
+
+.dashboard-hero-logo {
+  display: block;
+  width: 380px;
+  height: 143px;
+  overflow: hidden;
+  -webkit-user-drag: none;
+}
+
+.dashboard-hero-logo > span {
+  display: block;
+  width: 380px;
+  height: 143px;
+  background-image: url("commerce-lab-logo-on-light.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 380px auto;
+  pointer-events: none;
+}
+
+.dashboard-intro .dashboard-subject-line {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(19px, 1.7vw, 25px);
+  line-height: 1.45;
+}
+
+.dashboard-intro .dashboard-subject-line strong {
+  font-size: 1.1em;
+  font-weight: 800;
+}
+
+.subject-red {
+  color: #d94b56;
+}
+
+.subject-yellow {
+  color: #c18700;
+}
+
+.subject-green {
+  color: #3f9f68;
+}
